@@ -1,0 +1,402 @@
+/* إعدادات عامة */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #05070c;
+    overflow: hidden;
+    position: relative;
+}
+
+/* لوحة الليزر الشفافة فوق الخلفية وتحت الأزرار */
+#laserCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* لكي لا يحجب الضغطات */
+    z-index: 40;
+}
+
+/* --- مؤثرات الخلفية الغامضة --- */
+.bg-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0, 195, 255, 0.03) 0%, rgba(0,0,0,0) 75%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: floatGlow 20s ease-in-out infinite alternate;
+}
+
+.bg-glow:nth-child(2) {
+    background: radial-gradient(circle, rgba(111, 0, 255, 0.02) 0%, rgba(0,0,0,0) 75%);
+    right: -10%;
+    bottom: -10%;
+    animation-delay: -10s;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(-5%, -5%) scale(1); }
+    100% { transform: translate(5%, 10%) scale(1.1); }
+}
+
+/* --- شريط الخيارات العلوي (Navbar) --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(5, 7, 12, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    z-index: 100;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.02);
+    color: #7e95a5;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.btn:hover {
+    background: rgba(0, 229, 255, 0.06);
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* --- تصميم الروبوت المطور الميتاليك (AGIBOT) --- */
+.robot-container {
+    position: fixed;
+    left: 8%;
+    bottom: -2%; /* خروج من أسفل الشاشة مثل الصورة */
+    width: 180px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.robot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* الرقبة الميكانيكية السوداء */
+.robot-neck {
+    width: 18px;
+    height: 25px;
+    background: #111520;
+    border: 2px solid #232d42;
+    border-radius: 4px;
+    margin-bottom: -5px;
+    z-index: 2;
+}
+
+/* رأس الروبوت - أسود ناعم انسيابي بالكامل */
+.robot-head {
+    width: 95px;
+    height: 110px;
+    background: linear-gradient(135deg, #1e222b, #090a0f); /* Matte Black */
+    border-radius: 45px 45px 35px 35px; /* شكل بيضاوي انسيابي مطاطي */
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.08);
+    border: 1px solid #232833;
+    z-index: 3;
+    transition: transform 0.1s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* إضاءة زرقاء جانبية خافتة في الرأس */
+.head-light {
+    position: absolute;
+    top: 40px;
+    width: 4px;
+    height: 12px;
+    background-color: #00e5ff;
+    box-shadow: 0 0 8px #00e5ff;
+    opacity: 0.7;
+}
+.head-light.left { left: 8px; border-radius: 2px 0 0 2px; }
+.head-light.right { right: 8px; border-radius: 0 2px 2px 0; }
+
+/* مركز خروج ليزر العين التفاعلي */
+.laser-eye {
+    width: 10px;
+    height: 10px;
+    background-color: #00e5ff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00e5ff;
+    opacity: 0.9;
+}
+
+/* جسد الروبوت الفضي المعدني اللامع (Metallic) */
+.robot-body {
+    width: 130px;
+    height: 140px;
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 50%, #475569 100%); /* ميتاليك فضي */
+    border-radius: 35px 35px 20px 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 4px 6px rgba(255,255,255,0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    z-index: 1;
+}
+
+/* الدرع الصدري الداخلي المكتوب عليه */
+.chest-plate {
+    width: 100px;
+    height: 80px;
+    background: linear-gradient(180deg, #e2e8f0, #cbd5e1);
+    border-radius: 20px 20px 30px 30px;
+    border: 1px solid #94a3b8;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* كتابة اسم البراند بشكل ناعم ومرتب */
+.brand-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 3px;
+    opacity: 0.8;
+}
+
+/* المفصل السفلي للجسد */
+.body-joint {
+    width: 80px;
+    height: 25px;
+    background: #1e293b;
+    border-radius: 10px;
+    margin-top: 5px;
+    border-bottom: 4px solid #0f172a;
+}
+
+/* ظل الروبوت السفلي خافت */
+.robot-shadow {
+    width: 100px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    margin-top: 5px;
+    animation: shadowScale 6s ease-in-out infinite;
+}
+
+@keyframes shadowScale {
+    0% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(0.85); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* --- تصميم شاشة الترحيب المحدثة بالكامل (مطابق لصورة image_904bc2.png) --- */
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000; /* خلفية سوداء داكنة ومطابقة تماماً */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+/* الحاوية المركزية في منتصف الشاشة بدقة */
+.intro-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* استخدام خط عريض ومستقبلي مدعوم في أغلب الأنظمة */
+    font-family: 'Arial Black', Impact, sans-serif; 
+    user-select: none;
+}
+
+/* الكلمة العلوية Dev (نحيفة نسبياً ومحاذاة لليسار) */
+.word-top {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #ffffff;
+    align-self: flex-start; /* محاذاة لليسار */
+    margin-bottom: -25px;   /* تداخل ذكي مع الاسم بالأسفل */
+    margin-left: 2px;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: fadeInWord 0.8s forwards 0.2s ease-out;
+}
+
+/* الكلمة الرئيسية العريضة جداً والسميكة FER2S */
+.word-main {
+    font-size: 7rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    transform: scaleY(0.95); /* ضغط طفيف رأسي ليعطي طابع الخط الممتد */
+    opacity: 0;
+    animation: fadeInWord 0.8s forwards 0.4s ease-out;
+}
+
+/* العبارة السفلية iNs : Pi_B (صغيرة ومحاذاة لليمين تماماً) */
+.word-sub {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffffff;
+    align-self: flex-end; /* محاذاة لليمين أسفل الكلمة الرئيسية */
+    margin-top: -5px;     /* قرب متناسق مع كلمة FER2S */
+    margin-right: 15px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInWord 0.8s forwards 0.6s ease-out;
+}
+
+/* أنيميشن الظهور التدريجي السلس للكلمات */
+@keyframes fadeInWord {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* كلاس الإخفاء التدريجي بعد انتهاء المهلة الزمنية */
+.intro-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.navbar, .robot-container, .bg-glow, #laserCanvas {
+    opacity: 0;
+    animation: fadeInMain 1.2s 2.2s forwards ease-in-out;
+}
+
+@keyframes fadeInMain {
+    to { opacity: 1; }
+}
+/* --- تنسيق حاوية البوكسات (Cards) --- */
+.main-content {
+    position: relative;
+    z-index: 60; /* فوق الليزر لكي تستطيع الضغط على البوكسات */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 20px 20px 20px; /* مسافة علوية لكي لا تتداخل مع الـ navbar */
+}
+
+.cards-container {
+    display: flex;
+    gap: 25px;
+    max-width: 1100px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* لتتوافق مع الشاشات الصغيرة والهواتف */
+}
+
+/* تصميم البوكس الزجاجي المظلم التفاعلي */
+.card {
+    background: rgba(22, 31, 48, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 30px 25px;
+    width: 300px;
+    text-align: center;
+    text-decoration: none; /* إلغاء الخط الأزرق للروابط */
+    color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* تأثير التمرير (Hover) اللطيف والمضيء على البوكس */
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(0, 229, 255, 0.04);
+    border-color: rgba(0, 229, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.08);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.15); /* تكبير الأيقونة عند التمرير */
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #7e95a5;
+    line-height: 1.6;
+}

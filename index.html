@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#Dev_Feras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="introScreen" class="intro-container">
+        <div class="intro-text-wrapper">
+            <span class="word-top">Dev</span>
+            <h1 class="word-main">FERAS</h1>
+            <span class="word-sub">iNs : Pi_B</span>
+        </div>
+    </div>
+
+    <canvas id="laserCanvas"></canvas>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar">
+        <div class="logo">لوحة التحكم</div>
+        <div class="button-group">
+            <button class="btn active">الرئيسية</button>
+            <button class="btn">الملف الشخصي</button>
+            <button class="btn">الإعدادات</button>
+            <button class="btn">تسجيل الخروج</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="cards-container">
+            
+            <a href="projects.html" class="card">
+                <div class="card-icon">📁</div>
+                <h3>المشاريع البرمجية</h3>
+                <p>استعرض أحدث التطبيقات والمواقع التي قمت بتطويرها بتصاميم عصرية.</p>
+            </a>
+
+            <a href="services.html" class="card">
+                <div class="card-icon">⚡</div>
+                <h3>الخدمات والحلول</h3>
+                <p>نقدم حلولاً متكاملة لتطوير المواقع، وتحسين الأداء، وإصلاح المشاكل.</p>
+            </a>
+
+            <a href="contact.html" class="card">
+                <div class="card-icon">✉️</div>
+                <h3>اتصل بنا</h3>
+                <p>تواصل معي مباشرة لمناقشة مشروعك القادم وبدء العمل عليه فوراً.</p>
+            </a>
+
+        </div>
+    </main>
+
+    <div class="robot-container">
+        <div class="robot">
+            <div class="robot-neck"></div>
+            <div class="robot-head" id="robotHead">
+                <div class="head-light left"></div>
+                <div class="head-light right"></div>
+                <div class="laser-eye" id="laserEye"></div>
+            </div>
+            <div class="robot-body">
+                <div class="chest-plate">
+                    <span class="brand-text">AGIBOT</span>
+                </div>
+                <div class="body-joint"></div>
+            </div>
+        </div>
+        <div class="robot-shadow"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

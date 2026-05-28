@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المشاريع - Dev Feras</title>
+    <!-- ربط ملف التصميم الأساسي للمشروع -->
+    <link rel="stylesheet" href="style.css">
+    <!-- ربط ملف التصميم الخاص بصفحة المشاريع -->
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+
+    <div id="introScreen" class="intro-container">
+        <div class="intro-text-wrapper">
+            <span class="word-top">Dev</span>
+            <h1 class="word-main">FERAS</h1>
+            <span class="word-sub">iNs : Pi_B</span>
+        </div>
+    </div>
+
+    <!-- لوحة رسم شعاع الليزر التفاعلي -->
+    <canvas id="laserCanvas"></canvas>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow"></div>
+
+    <!-- شريط الخيارات العلوي -->
+    <nav class="navbar">
+        <div class="logo">لوحة التحكم</div>
+        <div class="button-group">
+            <a href="index.html" class="btn">الرئيسية</a>
+            <button class="btn active">المشاريع</button>
+            <button class="btn">الملف الشخصي</button>
+            <button class="btn">الإعدادات</button>
+        </div>
+    </nav>
+
+    <!-- منطقة المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="page-wrapper">
+            <!-- [الخط الأزرق] الكلام المكتوب فوق البوكس الرئيسي -->
+            <div class="top-badge-text">Abuot #Me</div>
+
+            <!-- [الخط الأحمر] البوكس الرئيسي الكبير للمحتوى -->
+            <div class="content-box">
+                <!-- [الخط الرصاصي] حاوية الصورة -->
+                <div class="box-image-area">
+                  <img src="img.jpg" alt="صورة المشروع" class="project-img">
+                </div>
+
+                <!-- حاوية النصوص والبيانات -->
+                <div class="box-info-area">
+                    <!-- [الخط الأصفر] العنوان الرئيسي -->
+                    <h2 class="box-title">؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟</h2>
+                    
+                    <!-- [الخط السماوي] المحتوى والشرح التفصيلي -->
+                    <div class="box-description">
+                        <p>@Pi_B</p>
+                        <p>B2yyyyyyyyyyyyyyyyy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- كائن الروبوت المتطور (AGIBOT) -->
+    <div class="robot-container">
+        <div class="robot">
+            <div class="robot-neck"></div>
+            <div class="robot-head" id="robotHead">
+                <div class="head-light left"></div>
+                <div class="head-light right"></div>
+                <div class="laser-eye" id="laserEye"></div>
+            </div>
+            <div class="robot-body">
+                <div class="chest-plate"><span class="brand-text">AGIBOT</span></div>
+                <div class="body-joint"></div>
+            </div>
+        </div>
+        <div class="robot-shadow"></div>
+    </div>
+
+    <!-- ملف الجافاسكريبت المشترك المسؤول عن إخفاء الشاشة وحركة الروبوت -->
+    <script src="script.js"></script>
+</body>
+</html>
