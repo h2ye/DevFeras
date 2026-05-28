@@ -1,4 +1,4 @@
-// 1. كود إخفاء شاشة الترحيب
+// 1. كود إخفاء شاشة الترحيب بنعومة
 window.addEventListener("load", () => {
     const introScreen = document.getElementById('introScreen');
     if (introScreen) {
@@ -19,17 +19,17 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// إحداثيات الهدف (تعمل للماوس واللمس معاً)
+// إحداثيات الهدف الافتراضية في منتصف الشاشة
 let targetX = window.innerWidth / 2;
 let targetY = window.innerHeight / 2;
 
-// دعم الكمبيوتر (الماوس)
+// دعم أجهزة الكمبيوتر (الماوس)
 document.addEventListener('mousemove', (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
 });
 
-// دعم الهواتف الذكية (اللمس والسحب)
+// دعم الهواتف الذكية (اللمس والسحب التفاعلي)
 document.addEventListener('touchmove', (e) => {
     if (e.touches.length > 0) {
         targetX = e.touches[0].clientX;
@@ -45,13 +45,13 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: true });
 
 
-// حلقة الانيميشن المستمرة للروبوت والليزر
+// حلقة الأنيميشن المستمرة للروبوت والليزر
 function animate() {
     const robotHead = document.getElementById('robotHead');
     const laserEye = document.getElementById('laserEye');
 
     if (robotHead && laserEye) {
-        // حساب إحداثيات مركز الرأس لإجراء الالتفات
+        // حساب إحداثيات مركز الرأس لإجراء الالتفات بدقة
         const rect = robotHead.getBoundingClientRect();
         const robotCenterX = rect.left + rect.width / 2;
         const robotCenterY = rect.top + rect.height / 2;
